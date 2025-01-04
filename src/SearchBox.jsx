@@ -48,11 +48,8 @@ export default function SearchBox({updateInfo}) {
         <div className="SearchBox">
             
             <form onSubmit={handleSubmit}>
-            <TextField id="city" label="City Name" variant="outlined"  value={city} onChange={(e) => setCity(e.target.value)} required />
-                
-                    <br /><br />
-
-                <Button variant="contained" type='submit'>Search</Button>
+            <TextField className='text' id="city" label="City Name" variant="outlined"  value={city} onChange={(e) => setCity(e.target.value)} required />
+            <Button type='submit'><img src="https://cdn-icons-png.flaticon.com/128/11741/11741045.png" /></Button>
            { err && <p>No such place exists</p>}
             </form>
         </div>

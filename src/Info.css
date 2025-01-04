@@ -1,4 +1,86 @@
-.info{
-    background: linear-gradient(135deg ,#00feba, #5b548a);
-    color:#fff;
+/* Overall container for the weather info */
+.info-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Card-like styling for the weather info */
+.weather-card {
+    display: flex;
+    max-width: 400px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    overflow: hidden;
+    margin: 20px;
+}
+
+/* Section for the weather icon */
+.img{
+    margin-left: 6rem;
+    height: 5rem;
+    width: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.weather-icon {
+    width: 50px;
+    height: 50px;
+}
+
+/* Section for the weather details */
+.details-section {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.city-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.temperature p,
+.humidity p,
+.weather-description p {
+    margin: 5px 0;
+}
+
+.temperature p {
+    font-size: 1rem;
+    color: #333;
+}
+
+.humidity p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.weather-description p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Make the card responsive */
+@media (max-width: 768px) {
+    
+
+    
+
+    .details-section {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .city-name {
+        text-align: center;
+    }
 }

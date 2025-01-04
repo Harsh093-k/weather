@@ -1,5 +1,37 @@
-.weather{
+/* .weather{
     border: 4px solid black;
     
     color:blue;
+} */
+
+.weather {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
 }
+
+.header {
+    display: flex;
+    align-items: center;  /* Vertically center the image and text */
+    gap: 10px;  /* Space between the image and the heading */
+    margin-bottom: 20px; /* Adds space below the header */
+}
+
+.header img {
+    background-color: #f0f8ff;
+    width: 40px; /* Size of the image */
+    height: 40px;
+}
+
+.header h3 {
+    margin: 0; /* Removes default margin from <h3> */
+    font-size: 24px; /* Adjust the size of the heading */
+}
+
+
+

@@ -1,49 +1,51 @@
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import CloudIcon from '@mui/icons-material/Cloud';
 import "./Info.css";
-import cloud from"./cloudy.png";
 
-
+// Image URLs for different weather conditions
+const Rain_Url = "https://www.flaticon.com/free-icon/heavy-rain_8841317";
+const Hot_Url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkclgSavzuXWWvNm0nVrWYO8IbLSpRpPpW6g&s";
+const Cold_Url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThe33e_mJoAfVUAnb2GyE2PI-99-a8Cqh_ng&s"; // Winter Image
 
 export default function Info({ info }) {
-    const URL = "https://images.unsplash.com/photo-1734383640834-a53c9c5927f5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw3fHx8ZW58MHx8fHx8";
-    let Hot_Url="https://plus.unsplash.com/premium_photo-1676667573062-9f8a58721c29?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjF8fHN1bW1lcnxlbnwwfHwwfHx8MA%3D%3D";
-    let Cold_Url="https://images.unsplash.com/photo-1431036101494-66a36de47def?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8d2ludGVyfGVufDB8fDB8fHww";
-    let Rain_Url="https://plus.unsplash.com/premium_photo-1664303017917-71ebeb42343d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cmFpbnxlbnwwfHwwfHx8MA%3D%3D";
+    // Check if the necessary weather data is available
+    if (!info || !info.temp || !info.humidity) {
+        return <div className="info-container">Loading...</div>;
+    }
+
+    // Select an image based on the weather conditions
+    let imageUrl;
+
+    // Check humidity for rain
+    if (info.humidity > 80) {
+        imageUrl = Rain_Url; // Rainy weather
+    }
+    // Check temperature for hot or cold
+    else if (info.temp > 30) {
+        imageUrl = Hot_Url; // Hot weather
+    }
+    else if (info.temp <= 30 && info.temp >= 10) {
+        imageUrl = Cold_Url; // Winter or cold weather
+    } else {
+        imageUrl = Cold_Url; // Default to cold if temp is below 10°C
+    }
 
     return (
-        <div >
-            <br />
-
-            <Card sx={{ maxWidth: 345 }}>
-                <CardMedia
-                    sx={{ height: 140 }}
-                    image={info.humidity > 80 ? Rain_Url : info.temp > 15 ? Hot_Url : Cold_Url }
-                    
-                    title="green iguana"
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                        {info.city}
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: 'text.secondary' }} component={"span"} >
-                        <div>Temperature:{info.temp}&deg;</div>
-                        <br />
-                        <div>Temp_min:{info.temp_min}&deg;</div>
-                        <br />
-                        <div>Temp_max:{info.temp_max}&deg;</div>
-                        <br />
-                        <div>Humidity:{info.humidity}</div>
-                        <br />
-                        <div>The weather can be description as {info.description} and feels like {info.feels_like}</div>
-                        <br />
-                    </Typography>
-                </CardContent>
-
-            </Card>
+        <div className="info-container">
+            <div className="details-section">
+                <img className="img" src={imageUrl} alt="Weather Icon" />
+                <h2 className="city-name">{info.city}</h2>
+                <div className="temperature">
+                    <p>Temperature: {info.temp}&deg;C</p>
+                    <p>Min Temp: {info.temp_min}&deg;C</p>
+                    <p>Max Temp: {info.temp_max}&deg;C</p>
+                </div>
+                <div className="humidity">
+                    <p>Humidity: {info.humidity}%</p>
+                </div>
+                <div className="weather-description">
+                    <p><strong>Description:</strong> {info.description}</p>
+                    <p><strong>Feels Like:</strong> {info.feels_like}&deg;C</p>
+                </div>
+            </div>
         </div>
-    )
+    );
 }
