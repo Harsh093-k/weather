@@ -11,7 +11,7 @@ export default function Info({ info }) {
     }
 
  
-    let imageUrl;
+    let imageUrl
 
      if( info.humidity >= 100){
         imageUrl = Rain_Url;
