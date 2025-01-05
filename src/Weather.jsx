@@ -13,7 +13,7 @@ export default function Weather() {
             async (position) => {
                 const { latitude, longitude } = position.coords;
                 const API_URL = "http://api.openweathermap.org/data/2.5/weather";
-                const API_Key = "2d719627e2f727df29ffd8b915af7fe0" ;
+                const API_Key = "<%= process.env.API_KEY %>";
 
                 try {
                     // Fetch weather data using the coordinates
