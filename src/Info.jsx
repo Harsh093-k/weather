@@ -1,9 +1,8 @@
 import "./Info.css";
 
-// Image URLs for different weather conditions
-const Rain_Url = "https://www.flaticon.com/free-icon/heavy-rain_8841317";
-const Hot_Url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkclgSavzuXWWvNm0nVrWYO8IbLSpRpPpW6g&s";
-const Cold_Url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThe33e_mJoAfVUAnb2GyE2PI-99-a8Cqh_ng&s"; // Winter Image
+const Rain_Url = "https://cdn-icons-png.flaticon.com/128/8841/8841317.png"; // Image URL for rainy weather
+const Hot_Url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkclgSavzuXWWvNm0nVrWYO8IbLSpRpPpW6g&s"; // Image URL for hot weather
+const Cold_Url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThe33e_mJoAfVUAnb2GyE2PI-99-a8Cqh_ng&s"; // Image URL for cold weather
 
 export default function Info({ info }) {
     // Check if the necessary weather data is available
@@ -11,19 +10,15 @@ export default function Info({ info }) {
         return <div className="info-container">Loading...</div>;
     }
 
-    // Select an image based on the weather conditions
+ 
     let imageUrl;
 
-    // Check humidity for rain
-    if (info.humidity > 80) {
-        imageUrl = Rain_Url; // Rainy weather
-    }
-    // Check temperature for hot or cold
-    else if (info.temp > 30) {
+     if( info.humidity >= 100){
+        imageUrl = Rain_Url;
+     }else if (info.temp > 30) {
         imageUrl = Hot_Url; // Hot weather
-    }
-    else if (info.temp <= 30 && info.temp >= 10) {
-        imageUrl = Cold_Url; // Winter or cold weather
+    } else if (info.temp <= 30 && info.temp >= 10) {
+        imageUrl = Cold_Url; // Moderate or cold weather
     } else {
         imageUrl = Cold_Url; // Default to cold if temp is below 10°C
     }
@@ -48,4 +43,4 @@ export default function Info({ info }) {
             </div>
         </div>
     );
-}
+};
